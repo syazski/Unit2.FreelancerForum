@@ -8,19 +8,17 @@ const freelancers = [
 
 const freelancers2 = [    
     { name: "Carol", price: 70, occupation: "programmer" },
-    { name: "Dr. Slice", price: 25, occupation: "gardener" },
-    { name: "Dr. Pressure", price: 51, occupation: "programmer" },
-    { name: "Prof. Possibility", price: 43, occupation: "teacher" },
-    { name: "Prof. Prism", price: 81, occupation: "teacher" },
-    { name: "Dr. Impulse", price: 43, occupation: "teacher" },
-    { name: "Prof. Spark", price: 76, occupation: "programmer" },
-    { name: "Dr. Wire", price: 47, occupation: "teacher" },
-    { name: "Prof. Goose", price: 72, occupation: "driver" },
+    { name: "Joe", price: 25, occupation: "gardener" },
+    { name: "Matt", price: 51, occupation: "programmer" },
+    { name: "Brittany", price: 43, occupation: "teacher" },
+    { name: "Amber", price: 81, occupation: "teacher" },
+    { name: "Lee", price: 43, occupation: "teacher" },
+    { name: "Kate", price: 76, occupation: "programmer" },
+    { name: "Wayne", price: 47, occupation: "teacher" },
+    { name: "Sam", price: 72, occupation: "driver" },
   ];
 
 //select list1, and show the first set of freelancers list
-
-//function render() {
 const nameList = document.getElementById("list");
 const freelancerList = freelancers.map((freelancer) => {
     const nameElement = document.createElement("li");
@@ -32,24 +30,36 @@ const freelancerList = freelancers.map((freelancer) => {
 
 const priceList = document.getElementById("price");
 const freelancerPrice = freelancers.map((freelancer) => {
-    const listElement = document.createElement("li");
-    listElement.textContent = freelancer.price;
-    priceList.append(listElement);
-    return listElement;
+    const priceElement = document.createElement("li");
+    priceElement.textContent = freelancer.price;
+    priceList.append(priceElement);
+    return priceElement;
 });
 
 const occList = document.getElementById("occ");
 const freelancerOcc = freelancers.map((freelancer) => {
-    const listElement = document.createElement("li");
-    listElement.textContent = freelancer.occupation;
-    occList.append(listElement);
-    return listElement;
+    const occElement = document.createElement("li");
+    occElement.textContent = freelancer.occupation;
+    occList.append(occElement);
+    return occElement;
 });
 
+// create a function render that selects list2 and add freelancer2
+
+function render() {
+    const freelancer2List = document.querySelector("#list2");
+    const freelancer2Name = freelancers2.map((freelancer2) => {
+      const listElement2 = document.createElement("li");
+      listElement2.classList.add(freelancer2.name);
+      return listElement2;
+    });
+    freelancer2List.replaceChildren(...freelancer2Name);
+}
+
+//addFreelancer
+
 // create an interval to show freelancer2 every 1s
+const addFreelancerIntervalId = setInterval(render, 1000);
+render();
 
-
-//const addFreelancerIntervalId = setInterval(addFreelancer, 1000);
-
-// create a function that appends list, and render
 
