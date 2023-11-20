@@ -1,0 +1,14 @@
+h4 {
+    margin-left: 30px;
+}
+#list, #price, #occ {
+    color: #000;
+    list-style: none;
+}
+
+.grid-container {
+    display: grid;
+    grid-template:
+    "name price occupation" auto;
+    border: solid 1px;
+}
