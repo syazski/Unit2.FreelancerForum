@@ -6,24 +6,16 @@ const freelancers = [
     { name: "Bob", price: 50, occupation: "teacher" },
 ];
 
-const freelancers2 = [    
-    { name: "Carol", price: 70, occupation: "programmer" },
-    { name: "Joe", price: 25, occupation: "gardener" },
-    { name: "Matt", price: 51, occupation: "programmer" },
-    { name: "Brittany", price: 43, occupation: "teacher" },
-    { name: "Amber", price: 81, occupation: "teacher" },
-    { name: "Lee", price: 43, occupation: "teacher" },
-    { name: "Kate", price: 76, occupation: "programmer" },
-    { name: "Wayne", price: 47, occupation: "teacher" },
-    { name: "Sam", price: 72, occupation: "driver" },
-  ];
+const names = ["Carol", "Joe", "Matt", "Brittany", "Amber", "Lee", "Kate", "Wayne", "Sam"];
+const occupations = ["gardener", "programmer", "teacher", "driver"];
+const price =["90", "20", "50", "70","80", "30"]
 
-//select list1, and show the first set of freelancers list
-const nameList = document.getElementById("list");
+
+//select list1 from DOM, and show the first set of freelancers name, price and occupation
+const nameList = document.getElementById("name");
 const freelancerList = freelancers.map((freelancer) => {
     const nameElement = document.createElement("li");
     nameElement.textContent = freelancer.name;
-    //listElement.classList.add(freelancer.name, freelancer.price, freelancer.occupation);
     nameList.append(nameElement);
     return nameElement;
 });
@@ -42,24 +34,21 @@ const freelancerOcc = freelancers.map((freelancer) => {
     occElement.textContent = freelancer.occupation;
     occList.append(occElement);
     return occElement;
-});
+})
 
-// create a function render that selects list2 and add freelancer2
+// create function to update the average price on the array
+function averagePrice() {
+    // TODO Use the .reduce() method to return the total price of all the items in inventory
+    let sum = freelancers.reduce((total, freelancer) => total + freelancer.price, 0);
+    const avg = sum / freelancers.length;
+    return avg;
+  };
 
-function render() {
-    const freelancer2List = document.querySelector("#list2");
-    const freelancer2Name = freelancers2.map((freelancer2) => {
-      const listElement2 = document.createElement("li");
-      listElement2.classList.add(freelancer2.name);
-      return listElement2;
-    });
-    freelancer2List.replaceChildren(...freelancer2Name);
-}
+  const avgPrice = document.querySelector("h2").innerHTML = `The average starting price is $${averagePrice()}`; 
 
-//addFreelancer
+
+//Create a function to add a random freelancers to the freelancers array
 
 // create an interval to show freelancer2 every 1s
-const addFreelancerIntervalId = setInterval(render, 1000);
-render();
-
-
+//const addFreelancerIntervalId = setInterval(render, 1000);
+//render();
