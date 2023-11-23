@@ -12,9 +12,7 @@ const prices =["90", "20", "50", "70","80", "30"]
 
 const maxFreelancers = 10;
 
-const freelancers2 =[];
-
-// create an interval to show freelancers2 every 1s
+// create an interval to show new freelancers every 1s
 const addFreelancerIntervalId = setInterval(addFreelancer, 2000);
 
 //select list1 from DOM, and show the first set of freelancers name, price and occupation
@@ -40,6 +38,7 @@ const freelancerOcc = freelancers.map((freelancer) => {
     occElement.innerHTML = freelancer.occupation;
     occList.append(occElement);
     return occElement;
+
 })
 
 // create function to calculate the average price on the array
@@ -52,6 +51,7 @@ function averagePrice() {
   return avg;
 };
 
+//display the average price
 const displayPrice = document.querySelector("h2");
 displayPrice.innerHTML = `The average starting price is $${averagePrice()}`;
 
@@ -62,29 +62,31 @@ function addFreelancer() {
   const occupation = occupations[Math.floor(Math.random()* occupations.length)];
   freelancers.push({name, price, occupation});
 
+//pull the last object in the array
   const newLancer = [freelancers[freelancers.length -1]];
   
-  const name2List = document.getElementById("name2");
+//map to a new array
   const freelancer2List = newLancer.map((freelancer) => {
-    const name2Element = document.createElement("li");
-    name2Element.innerHTML = freelancer.name;
-    name2List.appendChild(name2Element);
-    });
+    //add to name section
+    const name2List = document.getElementById("name");
+      const name2Element = document.createElement("li");
+      name2Element.innerHTML = freelancer.name;
+      name2List.append(name2Element);
 
-    const price2List = document.getElementById("price2");
-    const freelancer2Price = newLancer.map((freelancer) => {
-      const price2Element = document.createElement("li");
-      price2Element.innerHTML = `$ ${freelancer.price}`;
-      price2List.appendChild(price2Element);
-    });
-
-    const occ2List = document.getElementById("occ2");
-    const freelancer2Occ = newLancer.map((freelancer) => {
+    //add to occupation section
+    const occ2List = document.getElementById("occ");
       const occ2Element = document.createElement("li");
       occ2Element.innerHTML = freelancer.occupation;
-      occ2List.appendChild(occ2Element);
-    });
+      occ2List.append(occ2Element);
 
+     //add to price section
+    const price2List = document.getElementById("price");
+      const price2Element = document.createElement("li");
+      price2Element.innerHTML = `$ ${freelancer.price}`;
+      price2List.append(price2Element);
+  });
+
+  //create a clearInterval
   if(freelancers.length >= maxFreelancers) {
     clearInterval(addFreelancerIntervalId);
   };
