@@ -43,13 +43,18 @@ const freelancerOcc = freelancers.map((freelancer) => {
 
 // create function to calculate the average price on the array
 function averagePrice() {
-  let sum = 0;
+  /*let sum = 0;
   for (let i = 0; i < freelancers.length; i++){
     sum += freelancers[i].price;
   };
   let avg = sum / freelancers.length;
+  return avg;*/
+
+  let sum = freelancers.reduce((total, item) => total + item.price, 0);
+  let avg = sum / freelancers.length;
   return avg;
 };
+
 
 //display the average price
 const displayPrice = document.querySelector("h2");
@@ -90,4 +95,8 @@ function addFreelancer() {
   if(freelancers.length >= maxFreelancers) {
     clearInterval(addFreelancerIntervalId);
   };
+  averagePrice();
+  const displayPrice = document.querySelector("h2");
+  displayPrice.innerHTML = `The average starting price is $${averagePrice()}`;
+
 };
